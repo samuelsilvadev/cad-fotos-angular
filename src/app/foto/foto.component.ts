@@ -11,8 +11,4 @@ export class FotoComponent {
   @Input() url: string = '';
   @Input() titulo: string = 'Não Informado';
 
-  constructor(private fotoService: FotoService ) {
-    console.log('Component foto iniciado');
-    fotoService.getAllFotos();
-  }
 }
