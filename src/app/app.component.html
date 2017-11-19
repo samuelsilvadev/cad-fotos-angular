@@ -1,6 +1,5 @@
 <div class="container-fluid">
-
-  <div *ngFor="let item of fotos">
+  <painel *ngFor="let item of fotos" titulo="{{ item .titulo }}">
     <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
-  </div>
+  </painel>
 </div>

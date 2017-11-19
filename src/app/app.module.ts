@@ -1,3 +1,5 @@
+import { PainelModule } from './painel/painel.module';
+import { PainelComponent } from './painel/painel.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FotoModule } from './foto/foto.module';
@@ -12,6 +14,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FotoModule,
+    PainelModule,
     HttpModule
   ],
   providers: [],

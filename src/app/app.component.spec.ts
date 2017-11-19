@@ -1,4 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
-describe('Testing AppComponent', () => {});
+describe('Testing AppComponent', () => {
+
+  let component: AppComponent;
+
+  it('', function() {
+
+  });
+
+});
