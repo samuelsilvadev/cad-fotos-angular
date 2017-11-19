@@ -1,4 +1,6 @@
 <div class="container-fluid">
-  <app-foto url="http://via.placeholder.com/350x250" titulo="placeholder"></app-foto>
-  <app-foto url="http://via.placeholder.com/350x250" titulo="placeholder"></app-foto>
+
+  <div *ngFor="let item of fotos">
+    <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
+  </div>
 </div>
