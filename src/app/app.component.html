@@ -2,9 +2,5 @@
   <h1 class="text-center">PrivatePic</h1>
 </div>
 <div class="container">
-  <div class="row">
-      <painel *ngFor="let item of fotos" titulo="{{ item .titulo }}" class="ui-md-2">
-        <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
-      </painel>
-  </div>
+  <app-cadastro-foto></app-cadastro-foto>
 </div>

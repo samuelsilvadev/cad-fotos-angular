@@ -6,10 +6,14 @@ import { FotoModule } from './foto/foto.module';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { CadastroFotoComponent } from './cadastro-foto/cadastro-foto.component';
+import { ListagemFotoComponent } from './listagem-foto/listagem-foto.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CadastroFotoComponent,
+    ListagemFotoComponent
   ],
   imports: [
     BrowserModule,
