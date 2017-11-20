@@ -1,6 +1,10 @@
-<div class="container-fluid">
-
-  <div *ngFor="let item of fotos">
-    <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
+<div class="jumbotron">
+  <h1 class="text-center">PrivatePic</h1>
+</div>
+<div class="container">
+  <div class="row">
+      <painel *ngFor="let item of fotos" titulo="{{ item .titulo }}" class="ui-md-2">
+        <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
+      </painel>
   </div>
 </div>
