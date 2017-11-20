@@ -1,0 +1,5 @@
+<div class="row">
+  <painel *ngFor="let item of fotos" titulo="{{ item .titulo }}" class="ui-md-2">
+    <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
+  </painel>
+</div>
