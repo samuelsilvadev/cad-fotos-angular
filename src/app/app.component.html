@@ -2,5 +2,20 @@
   <h1 class="text-center">PrivatePic</h1>
 </div>
 <div class="container">
-  <app-cadastro-foto></app-cadastro-foto>
+
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <a [routerLink]="['/cadastro']" class="btn btn-primary">
+              Nova foto
+            </a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br>
+  <router-outlet></router-outlet>
 </div>
