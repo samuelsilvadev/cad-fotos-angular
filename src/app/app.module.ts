@@ -8,18 +8,20 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CadastroFotoComponent } from './cadastro-foto/cadastro-foto.component';
 import { ListagemFotoComponent } from './listagem-foto/listagem-foto.component';
+import { ROUTING } from './app.routes';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CadastroFotoComponent,
-    ListagemFotoComponent
-  ],
   imports: [
     BrowserModule,
     FotoModule,
     PainelModule,
-    HttpModule
+    HttpModule,
+    ROUTING
+  ],
+  declarations: [
+    AppComponent,
+    CadastroFotoComponent,
+    ListagemFotoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
