@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FotoService } from './../foto/foto.service';
+import { Searchfoto } from '../services/searchfoto.shared.service';
 
 @Component({
   selector: 'app-listagem-foto',
@@ -8,9 +9,15 @@ import { FotoService } from './../foto/foto.service';
 })
 export class ListagemFotoComponent implements OnInit {
 
+  valorPesquisado: string = '';
   fotos: Object[] = [];
 
-  constructor(private serviceFoto: FotoService) {}
+  constructor(
+    private serviceFoto: FotoService,
+    private _sharedServiceSearchFoto: Searchfoto) {
+
+      _sharedServiceSearchFoto.changeEmitted$.subscribe(text => this.valorPesquisado = text );
+    }
 
   ngOnInit() {
 
