@@ -6,8 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FotoPipe implements PipeTransform {
 
-  transform(listaDeFotos, valorDigitado: string) {
-    console.log(listaDeFotos);
-    console.log(valorDigitado);
+  transform(listaDeFotos, valorDigitado: string = '') {
+
+    return listaDeFotos
+            .filter(foto => foto.titulo.toLowerCase().includes(valorDigitado.toLowerCase()));
   }
 }

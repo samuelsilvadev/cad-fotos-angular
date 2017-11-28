@@ -12,7 +12,7 @@
               Nova foto
             </a>
           </span>
-          <input #valorPesquisado type="text" class="form-control" placeholder="Digite sua pesquisa">
+          <input #valorPesquisado (keyup)="pesquisarFotos(valorPesquisado.value)" type="text" class="form-control" placeholder="Digite sua pesquisa">
         </div>
       </form>
     </div>

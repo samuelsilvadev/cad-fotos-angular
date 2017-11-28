@@ -1,3 +1,4 @@
+import { Searchfoto } from './services/searchfoto.shared.service';
 import { PainelModule } from './painel/painel.module';
 import { PainelComponent } from './painel/painel.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,7 +24,7 @@ import { ROUTING } from './app.routes';
     CadastroFotoComponent,
     ListagemFotoComponent
   ],
-  providers: [],
+  providers: [Searchfoto],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
