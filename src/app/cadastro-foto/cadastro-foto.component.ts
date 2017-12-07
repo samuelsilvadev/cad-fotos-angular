@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FotoComponent } from '../foto/foto.component';
 
 @Component({
   selector: 'app-cadastro-foto',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroFotoComponent implements OnInit {
 
-  constructor() { }
+  foto: FotoComponent;
+
+  constructor() {
+
+    this.foto = new FotoComponent();
+    this.foto.titulo = '';
+  }
 
   ngOnInit() {
+  }
+
+  cadastrar(e) {
+
+    e.preventDefault();
+    console.log(this.foto);
+  }
+
+  iniciarValores(e) {
+
+    e.preventDefault();
+    this.foto = new FotoComponent();
+    this.foto.titulo = '';
   }
 
 }
