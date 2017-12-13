@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { FotoService } from './../foto/foto.service';
+import { Component } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
 
 @Component({
@@ -6,23 +7,21 @@ import { FotoComponent } from '../foto/foto.component';
   templateUrl: './cadastro-foto.component.html',
   styleUrls: ['./cadastro-foto.component.scss']
 })
-export class CadastroFotoComponent implements OnInit {
+export class CadastroFotoComponent {
 
   foto: FotoComponent;
 
-  constructor() {
+  constructor(private serviceFoto: FotoService) {
 
     this.foto = new FotoComponent();
     this.foto.titulo = '';
-  }
-
-  ngOnInit() {
+    this.foto.id = 9;
   }
 
   cadastrar(e) {
 
     e.preventDefault();
-    console.log(this.foto);
+    this.serviceFoto.save(this.foto);
   }
 
   iniciarValores(e) {
@@ -31,5 +30,4 @@ export class CadastroFotoComponent implements OnInit {
     this.foto = new FotoComponent();
     this.foto.titulo = '';
   }
-
 }

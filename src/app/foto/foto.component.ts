@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class FotoComponent {
 
+  id: number = 0;
   @Input() url: string = '';
   @Input() titulo: string = 'Não Informado';
 
