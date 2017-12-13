@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { configs } from './../services/configs';
+
 @Injectable()
 export class FotoService {
 
@@ -9,7 +11,7 @@ export class FotoService {
 
   getAllFotos() {
     return this.http
-      .get('http://localhost:3000/v1/fotos')
+      .get(`${configs.baseUri}/fotos`)
       .map(succ => succ.json());
   }
 }
