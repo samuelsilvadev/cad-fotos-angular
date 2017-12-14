@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FotoModule } from './foto/foto.module';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CadastroFotoComponent } from './cadastro-foto/cadastro-foto.component';
@@ -17,7 +18,8 @@ import { ROUTING } from './app.routes';
     FotoModule,
     PainelModule,
     HttpModule,
-    ROUTING
+    ROUTING,
+    FormsModule
   ],
   declarations: [
     AppComponent,
