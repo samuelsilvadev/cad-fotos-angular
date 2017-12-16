@@ -1,4 +1,4 @@
-<form (submit)="cadastrar($event)">
+<form #formNewImage="ngForm" (ngSubmit)="cadastrar($event)" novalidate>
   <div class="form-group">
     <label for="titulo">Título</label>
     <input
@@ -8,7 +8,11 @@
       type="text"
       class="form-control"
       placeholder="Digite um título para a foto"
-      required>
+      required
+      #titulo="ngModel">
+    <div *ngIf="titulo.errors && (titulo.dirty || titulo.touched)" class="invalid-feedback">
+      Campo obrigatório
+    </div>
   </div>
   <div class="form-group">
     <label for="url">Url</label>
@@ -19,9 +23,14 @@
       type="text"
       class="form-control"
       placeholder="Digite a url da foto"
-      required>
+      required
+      #url="ngModel">
+    <div *ngIf="url.errors && (url.dirty || url.touched)" class="invalid-feedback">
+      Campo obrigatório
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">Salvar</button>
+
+  <button type="submit" class="btn btn-primary" [disabled]="formNewImage.form.invalid">Salvar</button>
   <button type="button" class="btn btn-danger" (click)="iniciarValores($event)" >Cancelar</button>
   <button type="button" [routerLink]="['/lista']" class="btn btn-info">Voltar</button>
 </form>
