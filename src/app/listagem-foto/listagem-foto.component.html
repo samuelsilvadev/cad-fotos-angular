@@ -1,5 +1,5 @@
 <div class="row">
-  <painel *ngFor="let item of fotos | filtroPorTitulo : valorPesquisado" titulo="{{ item .titulo }}" class="ui-md-2">
+  <painel *ngFor="let item of fotos | filtroPorTitulo : valorPesquisado" titulo="{{ item .titulo }}" class="col-md-2">
     <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
   </painel>
 </div>
