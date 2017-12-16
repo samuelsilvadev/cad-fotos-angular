@@ -1,6 +1,7 @@
 import { FotoService } from './../foto/foto.service';
 import { Component } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
+import { configs } from '../services/configs';
 
 @Component({
   selector: 'app-cadastro-foto',
@@ -13,9 +14,11 @@ export class CadastroFotoComponent {
 
   constructor(private serviceFoto: FotoService) {
 
+    let lastId = parseInt(localStorage.getItem(configs.storage.nextId));
+
     this.foto = new FotoComponent();
     this.foto.titulo = '';
-    this.foto.id = 9;
+    this.foto.id = ++lastId;
   }
 
   cadastrar(e) {

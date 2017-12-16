@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
+import { FotoComponent } from '../foto/foto.component';
+
 import { FotoService } from './../foto/foto.service';
 import { Searchfoto } from '../services/searchfoto.shared.service';
+import { configs } from './../services/configs';
+
 
 @Component({
   selector: 'app-listagem-foto',
@@ -10,7 +15,7 @@ import { Searchfoto } from '../services/searchfoto.shared.service';
 export class ListagemFotoComponent implements OnInit {
 
   valorPesquisado: string = '';
-  fotos: Object[] = [];
+  fotos: FotoComponent[] = [];
 
   constructor(
     private serviceFoto: FotoService,
@@ -21,8 +26,18 @@ export class ListagemFotoComponent implements OnInit {
 
   ngOnInit() {
 
+    this.getFotos();
+  }
+
+  private getFotos() {
+
     this.serviceFoto
       .getAllFotos()
-      .subscribe(result => this.fotos = result);
+      .subscribe(result => {
+        this.fotos = result;
+        const arrIds = this.fotos.map(f => f.id);
+        const maxId = Math.max(...arrIds);
+        localStorage.setItem(configs.storage.nextId, JSON.stringify(maxId));
+      });
   }
 }
