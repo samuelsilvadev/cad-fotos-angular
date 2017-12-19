@@ -1,36 +1,43 @@
-<form #formNewImage="ngForm" (ngSubmit)="cadastrar($event)" novalidate>
-  <div class="form-group">
-    <label for="titulo">Título</label>
-    <input
-      id="titulo"
-      name="titulo"
-      [(ngModel)]="foto.titulo"
-      type="text"
-      class="form-control"
-      placeholder="Digite um título para a foto"
-      required
-      #titulo="ngModel">
-    <div *ngIf="titulo.errors && (titulo.dirty || titulo.touched)" class="invalid-feedback">
-      Campo obrigatório
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="url">Url</label>
-    <input
-      id="url"
-      name="url"
-      [(ngModel)]="foto.url"
-      type="text"
-      class="form-control"
-      placeholder="Digite a url da foto"
-      required
-      #url="ngModel">
-    <div *ngIf="url.errors && (url.dirty || url.touched)" class="invalid-feedback">
-      Campo obrigatório
-    </div>
-  </div>
+<div class="row">
+  <div class="col-md-8">
+    <form #formNewImage="ngForm" (ngSubmit)="cadastrar($event)" novalidate>
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <input
+          id="titulo"
+          name="titulo"
+          [(ngModel)]="foto.titulo"
+          type="text"
+          class="form-control"
+          placeholder="Digite um título para a foto"
+          required
+          #titulo="ngModel">
+        <div *ngIf="titulo.errors && (titulo.dirty || titulo.touched)" class="invalid-feedback">
+          Campo obrigatório
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="url">Url</label>
+        <input
+          id="url"
+          name="url"
+          [(ngModel)]="foto.url"
+          type="text"
+          class="form-control"
+          placeholder="Digite a url da foto"
+          required
+          #url="ngModel">
+        <div *ngIf="url.errors && (url.dirty || url.touched)" class="invalid-feedback">
+          Campo obrigatório
+        </div>
+      </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="formNewImage.form.invalid">Salvar</button>
-  <button type="button" class="btn btn-danger" (click)="iniciarValores($event)" >Cancelar</button>
-  <button type="button" [routerLink]="['/lista']" class="btn btn-info">Voltar</button>
-</form>
+      <button type="submit" class="btn btn-primary" [disabled]="formNewImage.form.invalid">Salvar</button>
+      <button type="button" class="btn btn-danger" (click)="iniciarValores($event)" >Cancelar</button>
+      <button type="button" [routerLink]="['/lista']" class="btn btn-info">Voltar</button>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <app-foto [url]="foto.url" [titulo]="foto.titulo"></app-foto>
+  </div>
+</div>
