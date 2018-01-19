@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Injectable, } from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { configs } from './../services/configs';
@@ -8,23 +9,27 @@ import { FotoComponent } from './foto.component';
 @Injectable()
 export class FotoService {
 
-  constructor(private http: Http) {}
+  private _headers: Headers;
+  private _endPoint: string = 'fotos';
+
+  constructor(private http: Http) {
+
+    this._headers = new Headers();
+    this._headers.append('Content-Type', 'application/json');
+  }
 
   getAllFotos() {
     return this.http
-      .get(`${configs.baseUri}/fotos`)
+      .get(`${configs.baseUri}/${this._endPoint}`)
       .map(succ => succ.json());
   }
 
-  save(foto: FotoComponent) {
+  save(foto: FotoComponent): Observable<Response> {
 
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    this.http
-      .post(`${configs.baseUri}/fotos`, JSON.stringify(foto), { headers: headers })
-      .subscribe(() => {
-        console.log('Salvo com sucesso');
-      }, err => console.log(err));
+    return this.http
+      .post(
+        `${configs.baseUri}/${this._endPoint}`,
+        JSON.stringify(foto),
+        { headers: this._headers });
   }
 }

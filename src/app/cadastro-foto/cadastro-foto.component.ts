@@ -14,7 +14,7 @@ export class CadastroFotoComponent {
 
   constructor(private serviceFoto: FotoService) {
 
-    let lastId = parseInt(localStorage.getItem(configs.storage.nextId));
+    let lastId = Number(localStorage.getItem(configs.storage.nextId));
 
     this.foto = new FotoComponent();
     this.foto.titulo = '';
@@ -24,7 +24,10 @@ export class CadastroFotoComponent {
   cadastrar(e) {
 
     e.preventDefault();
-    this.serviceFoto.save(this.foto);
+    this.serviceFoto.save(this.foto)
+      .subscribe(
+          succ => console.log(),
+          err => console.log(err));
   }
 
   iniciarValores(e) {
