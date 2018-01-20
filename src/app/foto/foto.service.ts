@@ -31,12 +31,21 @@ export class FotoService {
   }
 
   save(photo: FotoComponent): Observable<Response> {
+      return this.http
+        .post(
+          `${configs.baseUri}/${this._endPoint}`,
+          JSON.stringify(photo),
+          { headers: this._headers });
+  }
 
-    return this.http
-      .post(
-        `${configs.baseUri}/${this._endPoint}`,
-        JSON.stringify(photo),
-        { headers: this._headers });
+  update(photo: FotoComponent) {
+    if (photo.id) {
+      return this.http
+        .put(
+          `${configs.baseUri}/${this._endPoint}/${photo.id}`,
+          JSON.stringify(photo),
+          { headers: this._headers });
+    }
   }
 
   remove(photoId) {

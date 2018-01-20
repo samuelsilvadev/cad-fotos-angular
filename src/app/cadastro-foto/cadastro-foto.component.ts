@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CadastroFotoComponent {
 
   foto: FotoComponent;
+  private _mode: MODE = MODE.SAVE;
 
   constructor(
     private _serviceFoto: FotoService,
@@ -25,16 +26,24 @@ export class CadastroFotoComponent {
     this.foto.id = ++lastId;
   }
 
-  cadastrar(e) {
+  save(e) {
 
     e.preventDefault();
-    this._serviceFoto.save(this.foto)
-      .subscribe(
-          succ => console.log(),
-          err => console.log(err));
+
+    if (this._mode === MODE.SAVE) {
+      this._serviceFoto.save(this.foto)
+        .subscribe(
+        succ => console.log('Register success'),
+        err => console.log(err));
+    } else {
+      this._serviceFoto.update(this.foto)
+        .subscribe(
+        succ => console.log('Update success'),
+        err => console.log(err));
+    }
   }
 
-  iniciarValores(e) {
+  public initValues(e) {
 
     e.preventDefault();
     this.foto = new FotoComponent();
@@ -46,8 +55,16 @@ export class CadastroFotoComponent {
     if (id) {
       this._serviceFoto.getPhoto(id)
         .subscribe(
-          resp => this.foto = resp,
-          err => console.log(err));
+        resp => {
+          this._mode = MODE.UPDATE;
+          this.foto = resp;
+        },
+        err => console.log(err));
     }
   }
+}
+
+enum MODE {
+  SAVE,
+  UPDATE
 }

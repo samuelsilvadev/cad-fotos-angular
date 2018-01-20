@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-8">
-    <form #formNewImage="ngForm" (ngSubmit)="cadastrar($event)" novalidate>
+    <form #formNewImage="ngForm" (ngSubmit)="save($event)" novalidate>
       <div class="form-group">
         <label for="titulo">Título</label>
         <input
@@ -33,7 +33,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary" [disabled]="formNewImage.form.invalid">Salvar</button>
-      <button type="button" class="btn btn-danger" (click)="iniciarValores($event)" >Cancelar</button>
+      <button type="button" class="btn btn-danger" (click)="initValues($event)" >Cancelar</button>
       <button type="button" [routerLink]="['/lista']" class="btn btn-info">Voltar</button>
     </form>
   </div>
