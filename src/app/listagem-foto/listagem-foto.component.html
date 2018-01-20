@@ -1,6 +1,8 @@
 <div class="row">
   <painel *ngFor="let item of fotos | filtroPorTitulo : valorPesquisado" titulo="{{ item .titulo }}" class="col-md-2">
-    <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
+    <a [routerLink]="['/atualizar', item.id]">
+      <app-foto url="{{ item.url }}" titulo="{{ item .titulo }}"></app-foto>
+    </a>
     <button class="btn btn-danger btn-block btn--local" (click)="remove(item)">Remover</button>
   </painel>
 </div>
