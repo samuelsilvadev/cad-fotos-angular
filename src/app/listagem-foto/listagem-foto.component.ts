@@ -32,7 +32,7 @@ export class ListagemFotoComponent implements OnInit {
   private getAllPhotos() {
 
     this._serviceFoto
-      .getAllFotos()
+      .getAllPhotos()
       .subscribe(result => {
         this.fotos = result;
         const arrIds = this.fotos.map(f => f.id);
