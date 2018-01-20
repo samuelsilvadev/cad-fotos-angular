@@ -18,7 +18,13 @@ export class FotoService {
     this._headers.append('Content-Type', 'application/json');
   }
 
-  getAllFotos() {
+  getPhoto(id): Observable<FotoComponent> {
+    return this.http
+      .get(`${configs.baseUri}/${this._endPoint}/${id}`)
+      .map(succ => succ.json());
+  }
+
+  getAllPhotos() {
     return this.http
       .get(`${configs.baseUri}/${this._endPoint}`)
       .map(succ => succ.json());
