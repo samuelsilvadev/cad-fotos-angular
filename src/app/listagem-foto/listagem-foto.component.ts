@@ -18,7 +18,7 @@ export class ListagemFotoComponent implements OnInit {
   fotos: FotoComponent[] = [];
 
   constructor(
-    private serviceFoto: FotoService,
+    private _serviceFoto: FotoService,
     private _sharedServiceSearchFoto: Searchfoto) {
 
       _sharedServiceSearchFoto.changeEmitted$.subscribe(text => this.valorPesquisado = text );
@@ -26,12 +26,12 @@ export class ListagemFotoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getFotos();
+    this.getAllPhotos();
   }
 
-  private getFotos() {
+  private getAllPhotos() {
 
-    this.serviceFoto
+    this._serviceFoto
       .getAllFotos()
       .subscribe(result => {
         this.fotos = result;
@@ -39,5 +39,17 @@ export class ListagemFotoComponent implements OnInit {
         const maxId = Math.max(...arrIds);
         localStorage.setItem(configs.storage.nextId, JSON.stringify(maxId));
       });
+  }
+
+  remove(foto: FotoComponent) {
+
+    this._serviceFoto.remove(foto.id)
+    .subscribe(
+          () => {
+            const indice = this.fotos.indexOf(foto);
+            this.fotos.splice(indice, 1);
+            this.fotos = Array.from(this.fotos);
+          },
+          err => console.log(err));
   }
 }
