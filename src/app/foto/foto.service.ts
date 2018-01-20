@@ -24,12 +24,19 @@ export class FotoService {
       .map(succ => succ.json());
   }
 
-  save(foto: FotoComponent): Observable<Response> {
+  save(photo: FotoComponent): Observable<Response> {
 
     return this.http
       .post(
         `${configs.baseUri}/${this._endPoint}`,
-        JSON.stringify(foto),
+        JSON.stringify(photo),
+        { headers: this._headers });
+  }
+
+  remove(photoId) {
+    return this.http
+      .delete(
+        `${configs.baseUri}/${this._endPoint}/${JSON.stringify(photoId)}`,
         { headers: this._headers });
   }
 }
